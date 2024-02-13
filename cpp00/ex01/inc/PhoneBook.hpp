@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: xvi <xvi@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:07:58 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/11 15:15:59 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/02/13 09:31:42 by xvi              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class PhoneBook
 		~PhoneBook();
 		void	createContact(int index, string firstName, string lastName,
 							string nickName, string phoneNumber, string secret);
+		void	copyContact(Contact *src, Contact *dst);
 		Contact	getContact(int index);
 		string	getValue(int index, int value);
 	private:

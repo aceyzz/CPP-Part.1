@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: xvi <xvi@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:32:08 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/11 15:13:44 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/02/13 08:29:13 by xvi              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	Contact::setValue(int value, string content)
 		this->_phoneNumber = content;
 	else if (value == SECRET)
 		this->_darkestSecret = content;
-	std::cout << YEL "Error: setValue (cpp)" RST << std::endl;
+	else
+		std::cout << YEL "Error: setValue (cpp)" RST << std::endl;
 	return ;
 }
 

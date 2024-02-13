@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: xvi <xvi@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:47:52 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/11 15:32:17 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:02:10 by xvi              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <cctype>
 
 # define string std::string
 # define FIRST_NAME 1
@@ -40,7 +41,6 @@
 # define D_MAG "\033[0;35m"
 # define D_CYA "\033[0;36m"
 # define D_WHI "\033[0;37m"
-
 
 # include "PhoneBook.hpp"
 # include "Contact.hpp"

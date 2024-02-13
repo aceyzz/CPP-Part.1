@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: xvi <xvi@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:20:48 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/11 15:13:46 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/02/13 09:31:36 by xvi              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ string	PhoneBook::getValue(int index, int value)
 		return (book[index].getValue(value));
 	std::cout << YEL "Error: book[index].getValue (cpp)" RST << std::endl;
 	return (NULL);
+}
+
+void	PhoneBook::copyContact(Contact *src, Contact *dst)
+{
+	dst->setValue(FIRST_NAME, src->getValue(FIRST_NAME));
+	dst->setValue(LAST_NAME, src->getValue(LAST_NAME));
+	dst->setValue(NICK_NAME, src->getValue(NICK_NAME));
+	dst->setValue(PHONE_NBR, src->getValue(PHONE_NBR));
+	dst->setValue(SECRET, src->getValue(SECRET));
 }
 
 void	PhoneBook::createContact(int index, string firstName, string lastName,
