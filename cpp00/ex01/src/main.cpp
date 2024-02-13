@@ -6,7 +6,7 @@
 /*   By: xvi <xvi@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:45:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/13 12:11:25 by xvi              ###   ########.fr       */
+/*   Updated: 2024/02/13 12:42:44 by xvi              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void printContacts(PhoneBook* phonebook, int index)
 			if (value.length() >= 12)
 			{
 				value.resize(12);
-				value.replace(9, 3, "...");
+				value.replace(11, 1, ".");
 			}
 			std::cout << " " RST;
 			std::cout.width(12);
@@ -159,11 +159,11 @@ void searchContact(PhoneBook *phonebook)
 	}
 	std::cout << "Search results:" << std::endl;
 	std::cout << GRY;
-	for (int i = 0; i < 66; i++)
+	for (int i = 0; i < 62; i++)
 		std::cout << "-";
 	std::cout << std::endl;
-	std::cout << "| N° |  FIRST NAME  |   LAST NAME  |   NICK NAME  |   PHONE N°   |" << std::endl;
-	for (int i = 0; i < 66; i++)
+	std::cout << "|   N°   | FIRST NAME |  LASTNAME  |  NICKNAME  |  PHONE N°  |" << std::endl;
+	for (int i = 0; i < 62; i++)
 		std::cout << "-";
 	std::cout << std::endl;
 	for (int i = 0; i < 8; i++)
@@ -183,26 +183,28 @@ void searchContact(PhoneBook *phonebook)
 		if (contactFound)
 		{
 			found = true;
-			std::cout << "| " RST << i + 1 << GRY "  |";
+			std::cout << "|" RST;
+			std::cout.width(7);
+			std::cout << std::right << i + 1 << GRY " |";
 			for (int j = 1; j < 5; j++)
 			{
 				string value = phonebook->getValue(i, j);
-				if (value.length() >= 12)
+				if (value.length() >= 10)
 				{
-					value.resize(12);
-					value.replace(9, 3, "...");
+					value.resize(10);
+					value.replace(9, 1, ".");
 				}
 				std::cout << " " RST;
-				std::cout.width(12);
-				std::cout << std::left << value << GRY " |";
+				std::cout.width(10);
+				std::cout << std::right << value << GRY " |";
 			}
 			std::cout << std::endl;
 		}
 	}
 	if (!found)
-		std::cout << D_YEL " No contacts found matching the keyword (waring: case sensitive)" RST << std::endl;
+		std::cout << D_YEL " No contacts found matching the keyword (case sensitive)" RST << std::endl;
 	std::cout << GRY;
-	for (int i = 0; i < 66; i++)
+	for (int i = 0; i < 62; i++)
 		std::cout << "-";
 	std::cout << RST << std::endl << std::endl;
 }
