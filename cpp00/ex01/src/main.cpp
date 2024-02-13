@@ -216,7 +216,7 @@ int	main(void)
 	std::cout << "\033[2J\033[3J\033[H";
 	while (!std::cin.eof())
 	{
-		std::cout << GRY "Type you command (ADD/SEARCH/PRINT/EXIT)> " RST << std::endl;
+		std::cout << GRY "Type you command (ADD/SEARCH/PRINT/EXIT)..." RST << std::endl;
 		std::getline(std::cin, input);
 		cleanInput(input);
 		if (input == "EXIT")
