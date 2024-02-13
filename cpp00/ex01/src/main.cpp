@@ -6,7 +6,7 @@
 /*   By: xvi <xvi@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:45:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/13 12:42:44 by xvi              ###   ########.fr       */
+/*   Updated: 2024/02/13 14:03:33 by xvi              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	shiftContact(PhoneBook *phonebook, int index)
 	}
 }
 
-void addContact(PhoneBook* phonebook, int index)
+void	addContact(PhoneBook* phonebook, int index)
 {
 	string	first;
 	string	last;
@@ -104,109 +104,101 @@ void addContact(PhoneBook* phonebook, int index)
 	phonebook->createContact(0, first, last, nick, phone, secret);
 }
 
-void printContacts(PhoneBook* phonebook, int index)
+void	drawHeader()
+{
+	std::cout << GRY " ";
+	for (int i = 0; i < 58; i++)
+		std::cout << "-";
+	std::cout << " " << std::endl;
+	std::cout << "|" << std::left << std::setw(11) << " Index n°" << "|";
+	std::cout << std::setw(11) << " 1st Name" << "|";
+	std::cout << std::setw(11) << " Last Name" << "|";
+	std::cout << std::setw(11) << " Nick Name" << "|";
+	std::cout << std::setw(11) << " Phone n°" << "|" << std::endl;
+	std::cout << " ";
+	for (int i = 0; i < 58; i++)
+		std::cout << "-";
+	std::cout << " " << std::endl;
+}
+
+void	printContacts(PhoneBook* phonebook)
 {
 	Contact contact;
 	string value;
 
-	std::cout << GRY;
-	for (int i = 0; i < 66; i++)
-		std::cout << "-";
-	std::cout << std::endl;
-	std::cout <<"| N° |  FIRST NAME  |   LAST NAME  |   NICK NAME  |   PHONE N°   |" << std::endl;
-	for (int i = 0; i < 66; i++)
-		std::cout << "-";
-	std::cout << std::endl;
+	drawHeader();
 	for (int i = 0; i < 8; i++)
 	{
 		contact = phonebook->getContact(i);
-		std::cout << "| " RST << i + 1 << GRY "  |";
+		std::cout << "|" RST << std::right << std::setw(10) << i + 1 << GRY "|";
 		for (int j = 1; j < 5; j++)
 		{
 			value = phonebook->getValue(i, j);
-			if (value.length() >= 12)
+			if (value.length() > 10)
 			{
-				value.resize(12);
-				value.replace(11, 1, ".");
+				value.resize(9);
+				value += ".";
 			}
 			std::cout << " " RST;
-			std::cout.width(12);
-			std::cout << std::left << value << GRY " |";
+			std::cout << std::setw(10) << value << GRY "|";
 		}
 		std::cout << std::endl;
 	}
-	for (int i = 0; i < 66; i++)
+	std::cout << " ";
+	for (int i = 0; i < 58; i++)
 		std::cout << "-";
-	std::cout << RST << std::endl << std::endl;
+	std::cout << RST " " << std::endl;
 }
 
-void searchContact(PhoneBook *phonebook)
+void	searchContact(PhoneBook *phonebook);
+
+void	askIndex(PhoneBook *phonebook, string input)
+{
+	int index = std::stoi(input);
+	if (index > 0 && index < 9)
+	{
+		Contact contact = phonebook->getContact(index - 1);
+		if (contact.getValue(FIRST_NAME).empty() || contact.getValue(LAST_NAME).empty()
+			|| contact.getValue(NICK_NAME).empty() || contact.getValue(PHONE_NBR).empty()
+			|| contact.getValue(SECRET).empty())
+			std::cout << D_YEL "No contact at this index" RST << std::endl;
+		else
+		{
+			std::cout << std::endl << GRY "First Name:\t" RST << contact.getValue(FIRST_NAME) << std::endl;
+			std::cout << GRY "Last Name:\t" RST << contact.getValue(LAST_NAME) << std::endl;
+			std::cout << GRY "Nick Name:\t" RST << contact.getValue(NICK_NAME) << std::endl;
+			std::cout << GRY "Phone Number:\t" RST << contact.getValue(PHONE_NBR) << std::endl;
+			std::cout << GRY "Dark Secret:\t" RST << contact.getValue(SECRET) << std::endl << std::endl;
+		}
+	}
+	else
+		std::cout << D_YEL "Invalid index" RST << std::endl;
+}
+
+void	searchContact(PhoneBook *phonebook)
 {
 	string input;
-	bool found = false;
 
-	while (1 && !std::cin.eof())
+	printContacts(phonebook);
+	while (!std::cin.eof())
 	{
-		std::cout << GRY "Enter a keyword to search: " RST;
+		std::cout << GRY "Enter the contact's index to search: " RST;
 		std::getline(std::cin, input);
 		cleanInput(input);
-		if (input.empty())
+		if (isEmptyLine(input) || !is_digit(input))
 		{
-			std::cout << D_YEL "Enter a valid keyword to search" RST << std::endl;
-			continue;
+			std::cout << D_YEL "Enter a valid index to search" RST << std::endl;
+			continue ;
 		}
-		break;
+		else
+			break ;
 	}
-	std::cout << "Search results:" << std::endl;
-	std::cout << GRY;
-	for (int i = 0; i < 62; i++)
-		std::cout << "-";
-	std::cout << std::endl;
-	std::cout << "|   N°   | FIRST NAME |  LASTNAME  |  NICKNAME  |  PHONE N°  |" << std::endl;
-	for (int i = 0; i < 62; i++)
-		std::cout << "-";
-	std::cout << std::endl;
-	for (int i = 0; i < 8; i++)
-	{
-		Contact contact = phonebook->getContact(i);
-		bool contactFound = false;
-
-		for (int j = 1; j < 5; j++)
-		{
-			string value = phonebook->getValue(i, j);
-			if (value.find(input) != string::npos)
-			{
-				contactFound = true;
-				break;
-			}
-		}
-		if (contactFound)
-		{
-			found = true;
-			std::cout << "|" RST;
-			std::cout.width(7);
-			std::cout << std::right << i + 1 << GRY " |";
-			for (int j = 1; j < 5; j++)
-			{
-				string value = phonebook->getValue(i, j);
-				if (value.length() >= 10)
-				{
-					value.resize(10);
-					value.replace(9, 1, ".");
-				}
-				std::cout << " " RST;
-				std::cout.width(10);
-				std::cout << std::right << value << GRY " |";
-			}
-			std::cout << std::endl;
-		}
+	try {
+		askIndex(phonebook, input);
 	}
-	if (!found)
-		std::cout << D_YEL " No contacts found matching the keyword (case sensitive)" RST << std::endl;
-	std::cout << GRY;
-	for (int i = 0; i < 62; i++)
-		std::cout << "-";
-	std::cout << RST << std::endl << std::endl;
+	catch (std::exception &e) {
+		;
+	}
 }
 
 int	main(void)
@@ -218,17 +210,18 @@ int	main(void)
 	std::cout << "\033[2J\033[3J\033[H";
 	while (!std::cin.eof())
 	{
-		std::cout << GRY "Type you command (ADD/SEARCH/PRINT/EXIT)..." RST << std::endl;
+		std::cout << GRY "Type you command (ADD/SEARCH/EXIT)..." RST << std::endl;
 		std::getline(std::cin, input);
 		cleanInput(input);
 		if (input == "EXIT")
 			break ;
-		else if (input == "PRINT")
-			printContacts(&phonebook, index);
 		else if (input == "ADD")
 			addContact(&phonebook, index++);
 		else if (input == "SEARCH")
+		{
+			std::cout << "\033[2J\033[3J\033[H";
 			searchContact(&phonebook);
+		}
 		else if (!std::cin.eof())
 			std::cout << D_YEL "Invalid Command (waring: case sensitive)" RST << std::endl;
 	}

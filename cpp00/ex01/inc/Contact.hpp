@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: xvi <xvi@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:11:49 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/11 15:15:57 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:06:53 by xvi              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class Contact
 		string	_nickName;
 		string	_phoneNumber;
 		string	_darkestSecret;
+		bool	_isEmpty;
 };
 
 #endif

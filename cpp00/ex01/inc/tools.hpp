@@ -6,7 +6,7 @@
 /*   By: xvi <xvi@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:47:52 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/02/13 10:02:10 by xvi              ###   ########.fr       */
+/*   Updated: 2024/02/13 13:33:02 by xvi              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <cctype>
+# include <iomanip>
 
 # define string std::string
 # define FIRST_NAME 1
