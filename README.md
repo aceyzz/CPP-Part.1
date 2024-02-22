@@ -12,6 +12,7 @@
 <a href="https://github.com/aceyzz/CPP02"><img src="git_utils/15.png" alt="cpp02" style="width: 80%;">
 <img src="git_utils/100.png" alt="grade" style="width: 19%;"></a>
 
-<a href="https://github.com/aceyzz/CPP03"><img src="git_utils/16.png" alt="cpp03" style="width: 80%;"></a>
+<a href="https://github.com/aceyzz/CPP03"><img src="git_utils/16.png" alt="cpp03" style="width: 80%;">
+<img src="git_utils/100.png" alt="grade" style="width: 19%;"></a>
 
 <a href="https://github.com/aceyzz/CPP04"><img src="git_utils/17.png" alt="cpp04" style="width: 80%;"></a>
