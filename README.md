@@ -16,4 +16,4 @@
 <img src="git_utils/100.png" alt="grade" style="width: 19%;"></a>
 
 <a href="https://github.com/aceyzz/CPP04"><img src="git_utils/17.png" alt="cpp04" style="width: 80%;">
-<img src="git_utils/80.png" alt="grade" style="width: 19%;"></a>
+<img src="git_utils/100.png" alt="grade" style="width: 19%;"></a>
