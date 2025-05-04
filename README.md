@@ -1,5 +1,4 @@
-<img src="git_utils/banner.webp" alt="logo_common_core" style="width: 100%">
-<img src="git_utils/12.png" alt="logo_common_core" style="width: 100%">
+<img src="git_utils/banner.png" alt="logo_common_core" style="width: 100%">
 
 ## Projets
 
